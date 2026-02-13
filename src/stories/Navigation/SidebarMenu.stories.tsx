@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { SidebarMenu } from '../components/SidebarMenu/SidebarMenu';
+import { SidebarMenu } from '../../components/SidebarMenu/SidebarMenu';
 import { FiHome, FiSettings, FiUser } from 'react-icons/fi';
-import type { MenuItemProps } from '../components/SidebarMenu/MenuItem';
+import type { MenuItemProps } from '../../components/SidebarMenu/MenuItem';
 
 const meta = {
   title: 'Components/SidebarMenu',
