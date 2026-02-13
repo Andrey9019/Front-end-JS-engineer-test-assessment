@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { FiX } from 'react-icons/fi';
 
 export type ToastType = 'success' | 'error' | 'info' | 'warning';
@@ -13,17 +13,23 @@ export interface ToastProps {
 export const Toast = ({
   message,
   type = 'info',
-  duration = 3000,
+  duration = 2000,
   onClose,
 }: ToastProps) => {
+  const [isVisible, setIsVisible] = useState(true);
+
   useEffect(() => {
     if (duration > 0) {
       const timer = setTimeout(() => {
+        setIsVisible(false);
         onClose?.();
       }, duration);
+
       return () => clearTimeout(timer);
     }
   }, [duration, onClose]);
+
+  if (!isVisible) return null;
 
   const bgClasses = {
     success: 'bg-green-600 text-white border-green-700',
@@ -40,17 +46,16 @@ export const Toast = ({
         max-w-sm min-w-70
         transition-all duration-300 ease-out
         ${bgClasses}
-        opacity-100 translate-y-0
       `}
-      style={{
-        animation: 'slideIn 0.3s ease-out forwards',
-      }}
     >
       <div className="flex-1 text-sm font-medium">{message}</div>
 
       {onClose && (
         <button
-          onClick={onClose}
+          onClick={() => {
+            setIsVisible(false);
+            onClose?.();
+          }}
           className="text-current opacity-80 hover:opacity-100 focus:outline-none"
           aria-label="close"
         >

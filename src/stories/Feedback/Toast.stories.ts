@@ -51,9 +51,6 @@ export const CloseInfo: Story = {
     type: 'info',
     message: 'This is an info message. Click button to close.',
     duration: 0,
-    onClose: () => alert('Toast closed!'),
-
-    
-
+      onClose: () => console.log('Toast closed'),
   },
 };
