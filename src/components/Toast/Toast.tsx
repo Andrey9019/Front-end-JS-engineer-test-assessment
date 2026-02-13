@@ -29,7 +29,7 @@ export const Toast = ({
     success: 'bg-green-600 text-white border-green-700',
     error: 'bg-red-600 text-white border-red-700',
     info: 'bg-blue-600 text-white border-blue-700',
-    warning: 'bg-amber-500 text-black border-amber-600',
+    warning: 'bg-amber-600 text-black border-amber-700',
   }[type];
 
   return (
